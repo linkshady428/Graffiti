@@ -30,5 +30,9 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBAction func signUpAction(_ sender: Any) {
+        
+        
+    }
 }
 

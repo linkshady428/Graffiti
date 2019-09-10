@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D9BA0642327FED6005C0E99 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */; };
 		2DC785DA2324CC540054A25F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC785D92324CC540054A25F /* AppDelegate.swift */; };
 		2DC785DC2324CC540054A25F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC785DB2324CC540054A25F /* LoginViewController.swift */; };
 		2DC785DF2324CC540054A25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC785DD2324CC540054A25F /* Main.storyboard */; };
 		2DC785E12324CC570054A25F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC785E02324CC570054A25F /* Assets.xcassets */; };
 		2DC785E42324CC570054A25F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC785E22324CC570054A25F /* LaunchScreen.storyboard */; };
-		2DC785EC232621140054A25F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC785EB232621140054A25F /* CameraViewController.swift */; };
+		2DC785EC232621140054A25F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC785EB232621140054A25F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2DC785D62324CC540054A25F /* Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graffiti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC785D92324CC540054A25F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC785DB2324CC540054A25F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -23,7 +25,7 @@
 		2DC785E02324CC570054A25F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DC785E32324CC570054A25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DC785E52324CC570054A25F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DC785EB232621140054A25F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		2DC785EB232621140054A25F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,8 @@
 				2DC785E02324CC570054A25F /* Assets.xcassets */,
 				2DC785E22324CC570054A25F /* LaunchScreen.storyboard */,
 				2DC785E52324CC570054A25F /* Info.plist */,
-				2DC785EB232621140054A25F /* CameraViewController.swift */,
+				2DC785EB232621140054A25F /* HomeViewController.swift */,
+				2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */,
 			);
 			path = Graffiti;
 			sourceTree = "<group>";
@@ -140,7 +143,8 @@
 			files = (
 				2DC785DC2324CC540054A25F /* LoginViewController.swift in Sources */,
 				2DC785DA2324CC540054A25F /* AppDelegate.swift in Sources */,
-				2DC785EC232621140054A25F /* CameraViewController.swift in Sources */,
+				2D9BA0642327FED6005C0E99 /* SignUpViewController.swift in Sources */,
+				2DC785EC232621140054A25F /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
