@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
 
@@ -20,13 +21,20 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginAction(_ sender: Any) {
         
-        if(userText.text != "" && pwText.text != ""){
-            print("Username :"+userText.text!)
-            print("password :"+pwText.text!)
-            self.performSegue(withIdentifier: "loginToHome", sender: self)
-        }else{
-            print("sth wrong")
+        Auth.auth().signIn(withEmail: userText.text!, password: pwText.text!) { (user, error) in
+            
+            if error == nil{
+                self.performSegue(withIdentifier: "loginToHome", sender: self)
+            }
+            else{
+                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
+        
         
     }
     

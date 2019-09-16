@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var Text: UITextField!
+    var ref: DatabaseReference! = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func uploadAction(_ sender: Any) {
-        print("Upload:"+Text.text!)
+        ref.child("image").child("2123").setValue(["username":Text.text!])
     }
     
     /*
