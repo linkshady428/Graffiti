@@ -107,45 +107,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="biB-fF-qj4" userLabel="TextField">
-                                <rect key="frame" x="159" y="433" width="96" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBY-d0-UAB">
-                                <rect key="frame" x="171" y="497" width="72" height="35"/>
+                                <rect key="frame" x="20" y="782" width="66" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aT3-H1-TdZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Upload"/>
                                 <connections>
                                     <action selector="uploadAction:" destination="qdU-jI-54D" eventType="touchUpInside" id="9Eu-dm-AUW"/>
+                                    <action selector="uploadButton:" destination="qdU-jI-54D" eventType="touchUpInside" id="qoY-mw-Oo4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgN-T3-VLB">
-                                <rect key="frame" x="180" y="627" width="54" height="30"/>
-                                <state key="normal" title="Camera"/>
+                                <rect key="frame" x="326" y="779" width="68" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Choose"/>
+                                <connections>
+                                    <action selector="chooseAction:" destination="qdU-jI-54D" eventType="touchUpInside" id="pLP-rP-cQO"/>
+                                </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p17-pF-7BE">
+                                <rect key="frame" x="20" y="116" width="374" height="389"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="389" id="XCv-pe-UVS"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3da-7M-RYf" userLabel="Location Field">
+                                <rect key="frame" x="20" y="565" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="location"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cBY-d0-UAB" firstAttribute="top" secondItem="biB-fF-qj4" secondAttribute="bottom" constant="34" id="5Lu-qE-Lf9"/>
-                            <constraint firstItem="UTH-KX-4Rx" firstAttribute="bottom" secondItem="cBY-d0-UAB" secondAttribute="bottom" constant="330" id="7sz-vf-D1C"/>
-                            <constraint firstItem="VgN-T3-VLB" firstAttribute="centerX" secondItem="cBY-d0-UAB" secondAttribute="centerX" id="Ahc-Qd-CEQ"/>
-                            <constraint firstItem="cBY-d0-UAB" firstAttribute="centerX" secondItem="biB-fF-qj4" secondAttribute="centerX" id="hUQ-rj-1bf"/>
-                            <constraint firstItem="VgN-T3-VLB" firstAttribute="top" secondItem="cBY-d0-UAB" secondAttribute="bottom" constant="95" id="iSz-VX-5i1"/>
-                            <constraint firstItem="cBY-d0-UAB" firstAttribute="centerX" secondItem="5tR-XU-xSn" secondAttribute="centerX" id="jDT-2U-H7y"/>
-                            <constraint firstItem="biB-fF-qj4" firstAttribute="centerY" secondItem="5tR-XU-xSn" secondAttribute="centerY" id="sS5-Rz-yBy"/>
-                            <constraint firstItem="biB-fF-qj4" firstAttribute="leading" secondItem="UTH-KX-4Rx" secondAttribute="leading" constant="159" id="xOv-j1-FPI"/>
-                            <constraint firstItem="cBY-d0-UAB" firstAttribute="leading" secondItem="UTH-KX-4Rx" secondAttribute="leading" constant="171" id="xUd-7n-s3r"/>
+                            <constraint firstItem="VgN-T3-VLB" firstAttribute="leading" secondItem="cBY-d0-UAB" secondAttribute="trailing" constant="240" id="AJc-d1-hSb"/>
+                            <constraint firstItem="p17-pF-7BE" firstAttribute="trailing" secondItem="VgN-T3-VLB" secondAttribute="trailing" id="Cot-7t-yVx"/>
+                            <constraint firstItem="p17-pF-7BE" firstAttribute="trailing" secondItem="5tR-XU-xSn" secondAttribute="trailingMargin" id="EOK-we-Rsk"/>
+                            <constraint firstItem="UTH-KX-4Rx" firstAttribute="bottom" secondItem="cBY-d0-UAB" secondAttribute="bottom" constant="50" id="Inw-JC-KVD"/>
+                            <constraint firstItem="p17-pF-7BE" firstAttribute="top" secondItem="UTH-KX-4Rx" secondAttribute="top" constant="28" id="M1J-uh-Eg0"/>
+                            <constraint firstItem="cBY-d0-UAB" firstAttribute="centerY" secondItem="VgN-T3-VLB" secondAttribute="centerY" id="Qlg-eT-eJL"/>
+                            <constraint firstItem="cBY-d0-UAB" firstAttribute="leading" secondItem="p17-pF-7BE" secondAttribute="leading" id="v9N-3u-JFN"/>
+                            <constraint firstItem="cBY-d0-UAB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UTH-KX-4Rx" secondAttribute="leading" id="wuQ-Ot-iRa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UTH-KX-4Rx"/>
                     </view>
                     <connections>
-                        <outlet property="Text" destination="biB-fF-qj4" id="wTD-g2-MdF"/>
+                        <outlet property="chooseButton" destination="VgN-T3-VLB" id="vbY-Fh-9US"/>
+                        <outlet property="imageView" destination="p17-pF-7BE" id="Nl9-4g-9VN"/>
+                        <outlet property="locationText" destination="3da-7M-RYf" id="11v-NU-c6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyp-g9-Dc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320" y="-241"/>
+            <point key="canvasLocation" x="2318.840579710145" y="-241.07142857142856"/>
         </scene>
         <!--Sign up View Controller-->
         <scene sceneID="Yyf-5x-Rjr">

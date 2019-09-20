@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
-        
+        /*
         Auth.auth().signIn(withEmail: userText.text!, password: pwText.text!) { (user, error) in
             
             if error == nil{
@@ -34,8 +34,8 @@ class LoginViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
-        
+        */
+          self.performSegue(withIdentifier: "loginToHome", sender: self)
     }
     
     @IBAction func signUpAction(_ sender: Any) {
