@@ -11,6 +11,9 @@
 		2D9BA0642327FED6005C0E99 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */; };
 		2D9BA066232A1AA8005C0E99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BA065232A1AA8005C0E99 /* GoogleService-Info.plist */; };
 		2D9BA0682339D3CD005C0E99 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA0672339D3CD005C0E99 /* HomeViewController.swift */; };
+		2D9BA06A2339DD3A005C0E99 /* FirstpageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA0692339DD3A005C0E99 /* FirstpageViewController.swift */; };
+		2D9BA06C2339DD68005C0E99 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA06B2339DD68005C0E99 /* ProfileViewController.swift */; };
+		2D9BA06E2339DD92005C0E99 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA06D2339DD92005C0E99 /* SettingViewController.swift */; };
 		2DC785DA2324CC540054A25F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC785D92324CC540054A25F /* AppDelegate.swift */; };
 		2DC785DC2324CC540054A25F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC785DB2324CC540054A25F /* LoginViewController.swift */; };
 		2DC785DF2324CC540054A25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC785DD2324CC540054A25F /* Main.storyboard */; };
@@ -25,6 +28,9 @@
 		2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2D9BA065232A1AA8005C0E99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D9BA0672339D3CD005C0E99 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2D9BA0692339DD3A005C0E99 /* FirstpageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstpageViewController.swift; sourceTree = "<group>"; };
+		2D9BA06B2339DD68005C0E99 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2D9BA06D2339DD92005C0E99 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2DC785D62324CC540054A25F /* Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graffiti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC785D92324CC540054A25F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC785DB2324CC540054A25F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +85,9 @@
 				2DC785EB232621140054A25F /* PhotoViewController.swift */,
 				2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */,
 				2D9BA0672339D3CD005C0E99 /* HomeViewController.swift */,
+				2D9BA0692339DD3A005C0E99 /* FirstpageViewController.swift */,
+				2D9BA06B2339DD68005C0E99 /* ProfileViewController.swift */,
+				2D9BA06D2339DD92005C0E99 /* SettingViewController.swift */,
 			);
 			path = Graffiti;
 			sourceTree = "<group>";
@@ -218,7 +227,10 @@
 			files = (
 				2D9BA0682339D3CD005C0E99 /* HomeViewController.swift in Sources */,
 				2DC785DC2324CC540054A25F /* LoginViewController.swift in Sources */,
+				2D9BA06A2339DD3A005C0E99 /* FirstpageViewController.swift in Sources */,
+				2D9BA06E2339DD92005C0E99 /* SettingViewController.swift in Sources */,
 				2DC785DA2324CC540054A25F /* AppDelegate.swift in Sources */,
+				2D9BA06C2339DD68005C0E99 /* ProfileViewController.swift in Sources */,
 				2D9BA0642327FED6005C0E99 /* SignUpViewController.swift in Sources */,
 				2DC785EC232621140054A25F /* PhotoViewController.swift in Sources */,
 			);
