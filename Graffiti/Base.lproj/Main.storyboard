@@ -52,7 +52,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AVg-UJ-ANP"/>
-                                    <segue destination="ig4-TY-xAY" kind="showDetail" identifier="homePage" id="DLx-WP-iwI"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graffiti_icon" translatesAutoresizingMaskIntoConstraints="NO" id="syW-XJ-JRG">
@@ -105,6 +104,7 @@
                     <connections>
                         <outlet property="pwText" destination="OOX-bt-fgM" id="Y5f-1h-OlL"/>
                         <outlet property="userText" destination="vpS-C2-Bk8" id="AfJ-GF-fis"/>
+                        <segue destination="ig4-TY-xAY" kind="showDetail" identifier="homePage" id="9Um-qc-P9h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -263,6 +263,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rqo-lZ-Qtp"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UHW-C2-3ts"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJV-3b-uLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -806,6 +807,6 @@
         <segue reference="E7y-4Q-uAS"/>
         <segue reference="Il1-iQ-J18"/>
         <segue reference="GtN-Ho-3ys"/>
-        <segue reference="89G-9v-NOy"/>
+        <segue reference="ST3-wd-v9b"/>
     </inferredMetricsTieBreakers>
 </document>
