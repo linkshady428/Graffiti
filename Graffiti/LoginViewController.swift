@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: userText.text!, password: pwText.text!) { (user, error) in
             
             if error == nil{
-                self.performSegue(withIdentifier: "loginToHome", sender: self)
+                self.performSegue(withIdentifier: "homePage", sender: self)
             }
             else{
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -38,9 +38,6 @@ class LoginViewController: UIViewController {
         //  self.performSegue(withIdentifier: "loginToHome", sender: self)
     }
     
-    @IBAction func signUpAction(_ sender: Any) {
-        
-        
-    }
+
 }
 

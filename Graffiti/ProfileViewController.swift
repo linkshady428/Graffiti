@@ -16,7 +16,21 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func changeNameAction(_ sender: Any) {
+    }
+    
+    @IBAction func changePwAction(_ sender: Any) {
+    }
+    @IBAction func settingAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "settingPage", sender: self)
+    }
+    @IBAction func photoAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "photoPage", sender: self)
+    }
+    @IBAction func profileAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "profilePage", sender: self)
 
+    }
     /*
     // MARK: - Navigation
 

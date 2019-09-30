@@ -74,7 +74,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             pickImage.sourceType = UIImagePickerController.SourceType.camera
             //If you dont want to edit the photo then you can set allowsEditing to false
             pickImage.allowsEditing = true
-            pickImage.delegate = seßlf
+            pickImage.delegate = self
             self.present(pickImage, animated: true, completion: nil)
         }
         else{
