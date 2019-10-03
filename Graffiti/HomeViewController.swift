@@ -11,12 +11,16 @@ import UIKit
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationItem.hidesBackButton = true
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
+
     
     @IBAction func settingAction(_ sender: Any) {
+        
         self.performSegue(withIdentifier: "settingPage", sender: self)
     }
     

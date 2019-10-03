@@ -11,8 +11,10 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = false
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -27,10 +29,7 @@ class ProfileViewController: UIViewController {
     @IBAction func photoAction(_ sender: Any) {
         self.performSegue(withIdentifier: "photoPage", sender: self)
     }
-    @IBAction func profileAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "profilePage", sender: self)
-
-    }
+  
     /*
     // MARK: - Navigation
 

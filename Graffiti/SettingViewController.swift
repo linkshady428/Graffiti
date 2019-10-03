@@ -7,18 +7,31 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = false
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func logoutAction(_ sender: Any) {
-    }
+
     
+    @IBAction func logOutAction(_ sender: Any) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
     @IBAction func settingAction(_ sender: Any) {
         self.performSegue(withIdentifier: "settingPage", sender: self)
 

@@ -24,6 +24,9 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: userText.text!, password: pwText.text!) { (user, error) in
             
             if error == nil{
+                //let vc = self.storyboard?.instantiateViewController(withIdentifier: "Homepage")
+                //self.present(vc!, animated: true, completion: nil)
+
                 self.performSegue(withIdentifier: "homePage", sender: self)
             }
             else{

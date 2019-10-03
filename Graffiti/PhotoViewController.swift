@@ -16,17 +16,21 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var desView: UITextView!
+    @IBOutlet weak var tagView: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var pickImage = UIImagePickerController()
     var ref: DatabaseReference! = Database.database().reference()
     let locationManager = CLLocationManager()
     var imageID:String!
-    
     override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = false
         
-        super.viewDidLoad()
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
         
@@ -38,12 +42,43 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        super.viewDidLoad()
+    }
+
+    @IBAction func cancelAction(_ sender: Any) {
+        finishButton.isHidden = false
+        chooseButton.isHidden = false
+        uploadButton.isHidden = true
+        cancelButton.isHidden = true
+        desView.isEditable = true
+        tagView.isEnabled = true
+        desView.backgroundColor = UIColor.white
+        tagView.backgroundColor = UIColor.white
+        locationText.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func finishAction(_ sender: Any) {
+        if(imageView.image == nil){
+            let alertController = UIAlertController(title: "Error", message: "Select an image", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            finishButton.isHidden = true
+            chooseButton.isHidden = true
+            uploadButton.isHidden = false
+            cancelButton.isHidden = false
+            desView.isEditable = false
+            tagView.isEnabled = false
+            desView.backgroundColor = UIColor.clear
+            tagView.backgroundColor = UIColor.clear
+            locationText.backgroundColor = UIColor.clear
+        }
         
+       
     }
     
-    
-    @IBAction func uploadButton(_ sender: Any) {
-    }
     @IBAction func chooseAction(_ sender: Any) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -118,7 +153,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func uploadAction(_ sender: Any) {
+    /*@IBAction func uploadAction(_ sender: Any) {
         
         imageID = (self.ref?.child("Image").childByAutoId().key)
         uploadMedia() { url in
@@ -131,7 +166,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         
         
         }
-    }
+    }*/
 
     /*
     // MARK: - Navigation
