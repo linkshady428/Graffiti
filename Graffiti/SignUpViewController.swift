@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //where to upload Name!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //where to upload Name!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
     @IBAction func signUpAction(_ sender: Any) {
         if pwField.text != rePwField.text{
