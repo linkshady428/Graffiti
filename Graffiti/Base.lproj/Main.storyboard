@@ -474,6 +474,9 @@
                                 <rect key="frame" x="20" y="1035" width="63" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadAction:" destination="qdU-jI-54D" eventType="touchUpInside" id="uPv-Qb-kPE"/>
+                                </connections>
                             </button>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77z-EB-6MN">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1041"/>

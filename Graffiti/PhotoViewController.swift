@@ -27,6 +27,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     var ref: DatabaseReference! = Database.database().reference()
     let locationManager = CLLocationManager()
     var imageID:String!
+    
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = false
@@ -79,6 +80,20 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
        
     }
     
+    @IBAction func uploadAction(_ sender: Any) {
+        imageID = (self.ref?.child("Image").childByAutoId().key)
+        uploadMedia() { url in
+            guard url != nil else { return }
+            self.ref?.child("images").childByAutoId().setValue([
+                "description"     : self.desView.text!,
+                "location"        : self.locationText.text!,
+                "tag"             : self.tagView.text!,
+                "uuid"             : Auth.auth().currentUser?.uid
+                ])
+        
+        
+        }
+    }
     @IBAction func chooseAction(_ sender: Any) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -132,9 +147,11 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         
         let path = imageID + ".jpg"
         let storageRef = Storage.storage().reference().child("images").child(path)
-
-        if let uploadData = imageView.image?.jpegData(compressionQuality: 0.1) {
-            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+        let newMetadata = StorageMetadata()
+        newMetadata.contentType = "image/jpeg";
+        
+        if let uploadData = imageView.image?.jpegData(compressionQuality: 0.22) {
+            storageRef.putData(uploadData,metadata: newMetadata) { (metadata, error) in
                 if error != nil {
                     print("error")
                     completion(nil)
@@ -143,9 +160,6 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
                         print(url?.absoluteString as Any)
                         completion(url?.absoluteString)
                     })
-                    
-                    //  completion((metadata?.downloadURL()?.absoluteString)!))
-                    // your uploaded photo url.
                     
                     
                 }
