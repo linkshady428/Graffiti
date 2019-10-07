@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = false
+        let user = Auth.auth().currentUser
+        emailLabel.text = "Email:" + ((user?.email)!)
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -20,8 +26,9 @@ class ProfileViewController: UIViewController {
     
     @IBAction func changeNameAction(_ sender: Any) {
     }
-    
+
     @IBAction func changePwAction(_ sender: Any) {
+       
     }
     @IBAction func settingAction(_ sender: Any) {
         self.performSegue(withIdentifier: "settingPage", sender: self)
@@ -30,6 +37,7 @@ class ProfileViewController: UIViewController {
         self.performSegue(withIdentifier: "photoPage", sender: self)
     }
   
+
     /*
     // MARK: - Navigation
 
