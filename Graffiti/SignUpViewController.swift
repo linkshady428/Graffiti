@@ -34,7 +34,20 @@ class SignUpViewController: UIViewController {
             
             Auth.auth().createUser(withEmail: emailField.text!, password: pwField.text!){ (user, error) in
                 if error == nil {
-                    self.performSegue(withIdentifier: "signUpToLoginPage", sender: self)
+                    
+                        let alert = UIAlertController(title: "Successful!", message: "You are a member now!\n Please login", preferredStyle: UIAlertController.Style.alert )
+                    
+                       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                        
+                        
+                       self.navigationController?.popToRootViewController(animated: true)
+                       // let loginView = self.storyboard!.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+                        
+                        //self.navigationController?.pushToViewController(loginView, animated: true)
+                        
+                        
+                       }))
+                       self.present(alert, animated:true, completion: nil)
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
