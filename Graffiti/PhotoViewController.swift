@@ -76,8 +76,6 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             tagView.backgroundColor = UIColor.clear
             locationText.backgroundColor = UIColor.clear
         }
-        
-       
     }
     
     @IBAction func uploadAction(_ sender: Any) {
@@ -90,10 +88,12 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
                 "tag"             : self.tagView.text!,
                 "uuid"             : Auth.auth().currentUser?.uid
                 ])
-        
-        
         }
+        
+        
     }
+    
+    
     @IBAction func chooseAction(_ sender: Any) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -159,6 +159,14 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
                     storageRef.downloadURL(completion: { (url, error) in
                         print(url?.absoluteString as Any)
                         completion(url?.absoluteString)
+                        
+                        let alert = UIAlertController(title: "Successful!", message: "Upload Succefully!", preferredStyle: UIAlertController.Style.alert )
+                    
+                       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                            self.navigationController?.popViewController(animated: true)
+                       }))
+                       self.present(alert, animated:true, completion: nil)
+                            
                     })
                     
                     
