@@ -34,7 +34,14 @@ class SignUpViewController: UIViewController {
             
             Auth.auth().createUser(withEmail: emailField.text!, password: pwField.text!){ (user, error) in
                 if error == nil {
-                    
+                        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                        changeRequest?.displayName = self.nameField.text!
+                        changeRequest?.commitChanges { (error) in
+                            if error != nil{
+                                print("Wrong!!!!!")
+                            }
+                            
+                    }
                         let alert = UIAlertController(title: "Successful!", message: "You are a member now!\n Please login", preferredStyle: UIAlertController.Style.alert )
                     
                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
@@ -50,6 +57,7 @@ class SignUpViewController: UIViewController {
                        self.present(alert, animated:true, completion: nil)
                 }
                 else{
+                    
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     

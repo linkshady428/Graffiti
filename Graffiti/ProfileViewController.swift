@@ -19,17 +19,22 @@ class ProfileViewController: UIViewController {
         self.navigationItem.hidesBackButton = false
         let user = Auth.auth().currentUser
         emailLabel.text = "Email:" + ((user?.email)!)
+        nameLabel.text = "Name:" + ((user?.displayName)!)
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = false
+        let user = Auth.auth().currentUser
+        emailLabel.text = "Email:" + ((user?.email)!)
+        nameLabel.text = "Name:" + ((user?.displayName)!)
+    }
     
-    @IBAction func changeNameAction(_ sender: Any) {
-    }
 
-    @IBAction func changePwAction(_ sender: Any) {
-       
-    }
+    
     @IBAction func settingAction(_ sender: Any) {
         self.performSegue(withIdentifier: "settingPage", sender: self)
     }

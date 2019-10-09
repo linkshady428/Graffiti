@@ -12,6 +12,8 @@ import MapKit
 import CoreLocation
 import Firebase
 
+
+
 class PhotoViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var locationText: UITextField!
@@ -22,12 +24,13 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var desView: UITextView!
     @IBOutlet weak var tagView: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var labelText: UILabel!
     
     var pickImage = UIImagePickerController()
     var ref: DatabaseReference! = Database.database().reference()
     let locationManager = CLLocationManager()
     var imageID:String!
-    
+    var uploadLabels:String!
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = false
@@ -56,6 +59,8 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         desView.backgroundColor = UIColor.white
         tagView.backgroundColor = UIColor.white
         locationText.backgroundColor = UIColor.white
+        labelText.text = ""
+        uploadLabels = ""
     }
     
     @IBAction func finishAction(_ sender: Any) {
@@ -75,6 +80,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             desView.backgroundColor = UIColor.clear
             tagView.backgroundColor = UIColor.clear
             locationText.backgroundColor = UIColor.clear
+            labelImage()
         }
     }
     
@@ -84,9 +90,10 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             guard url != nil else { return }
             self.ref?.child("images").childByAutoId().setValue([
                 "description"     : self.desView.text!,
+                "Labels"          : self.uploadLabels!,
                 "location"        : self.locationText.text!,
                 "tag"             : self.tagView.text!,
-                "uuid"             : Auth.auth().currentUser?.uid
+                "uuid"            : Auth.auth().currentUser?.uid
                 ])
         }
         
@@ -110,6 +117,32 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    //MARK: - Image labelling
+    func labelImage(){
+        self.uploadLabels = ""
+        let labeler = Vision.vision().onDeviceImageLabeler()
+        let visionImage = VisionImage(image: self.imageView.image!)
+        
+        labeler.process(visionImage) { (labels, error) in
+            guard error == nil, let labels = labels, !labels.isEmpty else {
+                self.labelText.text = "Could not label this image"
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
+            for label in labels {
+                self.uploadLabels += "\(label.text) - \(label.confidence!),"
+                self.labelText.text! += "\(label.text) - \(label.confidence!) %\n"
+            }
+            if self.uploadLabels != "" {
+                self.uploadLabels.removeLast()
+                self.uploadLabels += "."
+            }
+            
+        }
+    }
+    
+    
     
     //MARK: - Location manager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -150,7 +183,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         let newMetadata = StorageMetadata()
         newMetadata.contentType = "image/jpeg";
         
-        if let uploadData = imageView.image?.jpegData(compressionQuality: 0.22) {
+        if let uploadData = imageView.image?.jpegData(compressionQuality: 0.4) {
             storageRef.putData(uploadData,metadata: newMetadata) { (metadata, error) in
                 if error != nil {
                     print("error")
@@ -174,32 +207,6 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
-    /*@IBAction func uploadAction(_ sender: Any) {
-        
-        imageID = (self.ref?.child("Image").childByAutoId().key)
-        uploadMedia() { url in
-            guard url != nil else { return }
-            self.ref?.child("images").childByAutoId().setValue([
-                "uid"              : Auth.auth().currentUser?.uid,
-                "description"     : "lllooo",
-                "location"       : self.locationText.text!,
-                ])
-        
-        
-        }
-    }*/
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 //MARK: - UIImagePickerControllerDelegate

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2439E131B30C516252E5CD6A /* Pods_Graffiti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BBBE0F0270F02E11EFD41E /* Pods_Graffiti.framework */; };
+		2D21A108234DB0D80024C094 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D21A107234DB0D80024C094 /* ChangeNameViewController.swift */; };
 		2D7970ED234B031D00C3C1E1 /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7970EC234B031D00C3C1E1 /* ChangePWViewController.swift */; };
 		2D9BA0642327FED6005C0E99 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */; };
 		2D9BA066232A1AA8005C0E99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BA065232A1AA8005C0E99 /* GoogleService-Info.plist */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		19BBBE0F0270F02E11EFD41E /* Pods_Graffiti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Graffiti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2118F2864CA2EA239A20965D /* Pods-Graffiti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Graffiti.debug.xcconfig"; path = "Target Support Files/Pods-Graffiti/Pods-Graffiti.debug.xcconfig"; sourceTree = "<group>"; };
+		2D21A107234DB0D80024C094 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		2D7970EC234B031D00C3C1E1 /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
 		2D9BA0632327FED6005C0E99 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2D9BA065232A1AA8005C0E99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				2D9BA06B2339DD68005C0E99 /* ProfileViewController.swift */,
 				2D9BA06D2339DD92005C0E99 /* SettingViewController.swift */,
 				2D7970EC234B031D00C3C1E1 /* ChangePWViewController.swift */,
+				2D21A107234DB0D80024C094 /* ChangeNameViewController.swift */,
 			);
 			path = Graffiti;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				2D9BA06E2339DD92005C0E99 /* SettingViewController.swift in Sources */,
 				2DC785DA2324CC540054A25F /* AppDelegate.swift in Sources */,
 				2D9BA06C2339DD68005C0E99 /* ProfileViewController.swift in Sources */,
+				2D21A108234DB0D80024C094 /* ChangeNameViewController.swift in Sources */,
 				2D9BA0642327FED6005C0E99 /* SignUpViewController.swift in Sources */,
 				2DC785EC232621140054A25F /* PhotoViewController.swift in Sources */,
 			);

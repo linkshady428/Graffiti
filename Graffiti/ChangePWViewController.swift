@@ -65,7 +65,7 @@ class ChangePWViewController: UIViewController {
                 }else{
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert )
                     let cancel = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
-                   alert.addAction(cancel)
+                    alert.addAction(cancel)
                     self.present(alert, animated:true, completion: nil)
                     
                 }
