@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var pwText: UITextField!
     
     override func viewDidLoad() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

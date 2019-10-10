@@ -12,6 +12,7 @@ import Firebase
 class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
+        
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = false
         super.viewDidLoad()

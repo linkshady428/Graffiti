@@ -13,6 +13,7 @@ class ChangeNameViewController: UIViewController {
 
     @IBOutlet weak var nameTF: UITextField!
     override func viewDidLoad() {
+       self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

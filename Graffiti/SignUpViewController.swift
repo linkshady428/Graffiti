@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var pwField: UITextField!
     @IBOutlet weak var rePwField: UITextField!
     override func viewDidLoad() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

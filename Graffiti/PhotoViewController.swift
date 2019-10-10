@@ -11,7 +11,7 @@ import FirebaseDatabase
 import MapKit
 import CoreLocation
 import Firebase
-
+import Contacts
 
 
 class PhotoViewController: UIViewController, CLLocationManagerDelegate {
@@ -31,7 +31,10 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var imageID:String!
     var uploadLabels:String!
+    var uploadCoordinates:String!
+   
     override func viewDidLoad() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = false
         
@@ -88,10 +91,10 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         imageID = (self.ref?.child("Image").childByAutoId().key)
         uploadMedia() { url in
             guard url != nil else { return }
-            self.ref?.child("images").childByAutoId().setValue([
+            self.ref?.child("images").child(self.imageID).setValue([
                 "description"     : self.desView.text!,
                 "Labels"          : self.uploadLabels!,
-                "location"        : self.locationText.text!,
+                "location"        : self.uploadCoordinates!,
                 "tag"             : self.tagView.text!,
                 "uuid"            : Auth.auth().currentUser?.uid
                 ])
@@ -142,12 +145,37 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
     //MARK: - Location manager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        locationText.text = "\(locValue.latitude) \(locValue.longitude)"
+        self.uploadCoordinates = "\(locValue.latitude) \(locValue.longitude)"
+        print(self.uploadCoordinates!)
+        
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+        
+        // Place details
+        var placeMark: CLPlacemark!
+        placeMark = placemarks?[0]
+        
+            self.locationText.text = placeMark.postalAddress!.street + ", " + placeMark.postalCode!
+            
+        // Complete address as PostalAddress
+        //self.locationText.text = placeMark.postalAddress as Any as? String//  Import Contacts
+        /*
+        // Location name
+        placeMark.name
+
+        // Street address
+        self.locationText.text = placeMark.thoroughfare
+
+        // Country
+        placeMark.country
+        }*/
+            
+        })
+        
     }
     
     
@@ -156,7 +184,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
             pickImage.sourceType = UIImagePickerController.SourceType.camera
             //If you dont want to edit the photo then you can set allowsEditing to false
-            pickImage.allowsEditing = true
+            pickImage.allowsEditing = false
             pickImage.delegate = self
             self.present(pickImage, animated: true, completion: nil)
         }
@@ -171,7 +199,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     func openGallary(){
         pickImage.sourceType = UIImagePickerController.SourceType.photoLibrary
         //If you dont want to edit the photo then you can set allowsEditing to false
-        pickImage.allowsEditing = true
+        pickImage.allowsEditing = false
         pickImage.delegate = self
         self.present(pickImage, animated: true, completion: nil)
     }
@@ -215,8 +243,9 @@ extension PhotoViewController:  UIImagePickerControllerDelegate, UINavigationCon
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
-            self.imageView.image = editedImage
+        if let editedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            
+            self.imageView.image = UIImage.resizeImage(image: editedImage, newHeight: 300)
         }
         
         //Dismiss the UIImagePicker after selection
@@ -228,3 +257,17 @@ extension PhotoViewController:  UIImagePickerControllerDelegate, UINavigationCon
         self.dismiss(animated: true, completion: nil)
     }
 }
+
+//MARK: - Resize Image
+extension UIImage {
+    class func resizeImage(image: UIImage, newHeight: CGFloat) -> UIImage {
+        let scale = newHeight / image.size.height
+        let newWidth = image.size.width * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
+
