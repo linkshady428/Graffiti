@@ -24,16 +24,20 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var desView: UITextView!
     @IBOutlet weak var tagView: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var labelText: UILabel!
     
+    
+    var image: UIImage?
     var pickImage = UIImagePickerController()
     var ref: DatabaseReference! = Database.database().reference()
     let locationManager = CLLocationManager()
     var imageID:String!
     var uploadLabels:String!
     var uploadCoordinates:String!
-   
+    var isGrafitti = false
+    
     override func viewDidLoad() {
+   
+        imageView.image = image
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = false
@@ -43,7 +47,6 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -62,7 +65,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         desView.backgroundColor = UIColor.white
         tagView.backgroundColor = UIColor.white
         locationText.backgroundColor = UIColor.white
-        labelText.text = ""
+
         uploadLabels = ""
     }
     
@@ -94,6 +97,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             self.ref?.child("images").child(self.imageID).setValue([
                 "description"     : self.desView.text!,
                 "Labels"          : self.uploadLabels!,
+                "isGrafitti"      : self.isGrafitti.description,
                 "location"        : self.uploadCoordinates!,
                 "tag"             : self.tagView.text!,
                 "uuid"            : Auth.auth().currentUser?.uid
@@ -123,23 +127,40 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - Image labelling
     func labelImage(){
+        var wallL = false
+        var postL = false
+   
+        
         self.uploadLabels = ""
         let labeler = Vision.vision().onDeviceImageLabeler()
         let visionImage = VisionImage(image: self.imageView.image!)
         
         labeler.process(visionImage) { (labels, error) in
             guard error == nil, let labels = labels, !labels.isEmpty else {
-                self.labelText.text = "Could not label this image"
+                
                 self.dismiss(animated: true, completion: nil)
                 return
             }
             for label in labels {
+                var confd:Double
                 self.uploadLabels += "\(label.text) - \(label.confidence!),"
-                self.labelText.text! += "\(label.text) - \(label.confidence!) %\n"
+                confd = label.confidence as! Double
+                if label.text == "Wall" && confd > 0.8{
+                    wallL = true
+                }
+                if label.text == "Poster" && confd > 0.4 {
+                    postL = true
+                }
             }
             if self.uploadLabels != "" {
                 self.uploadLabels.removeLast()
                 self.uploadLabels += "."
+                if wallL && postL {
+                    self.isGrafitti = true
+                }
+                print(self.uploadLabels!)
+            }else{
+                
             }
             
         }
@@ -149,7 +170,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         self.uploadCoordinates = "\(locValue.latitude) \(locValue.longitude)"
-        print(self.uploadCoordinates!)
+        // print(self.uploadCoordinates!)
         
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
@@ -159,11 +180,13 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
         var placeMark: CLPlacemark!
         placeMark = placemarks?[0]
         
-            self.locationText.text = placeMark.postalAddress!.street + ", " + placeMark.postalCode!
-            
-        // Complete address as PostalAddress
+        
+        self.locationText.text = placeMark.postalAddress!.street + ", " + placeMark.postalCode!
+        //print(placeMark.postalAddress?.subAdministrativeArea)
+                  // Complete address as PostalAddress
         //self.locationText.text = placeMark.postalAddress as Any as? String//  Import Contacts
         /*
+        
         // Location name
         placeMark.name
 
@@ -260,7 +283,7 @@ extension PhotoViewController:  UIImagePickerControllerDelegate, UINavigationCon
 
 //MARK: - Resize Image
 extension UIImage {
-    class func resizeImage(image: UIImage, newHeight: CGFloat) -> UIImage {
+    class func resizedaImage(image: UIImage, newHeight: CGFloat) -> UIImage {
         let scale = newHeight / image.size.height
         let newWidth = image.size.width * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
