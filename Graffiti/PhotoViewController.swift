@@ -96,11 +96,11 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             guard url != nil else { return }
             self.ref?.child("images").child(self.imageID).setValue([
                 "description"     : self.desView.text!,
-                "Labels"          : self.uploadLabels!,
-                "isGrafitti"      : self.isGrafitti.description,
+                "label"          : self.uploadLabels!,
+                "isGrafitti"      : self.isGrafitti,
                 "location"        : self.uploadCoordinates!,
                 "tag"             : self.tagView.text!,
-                "uuid"            : Auth.auth().currentUser?.uid
+                "uuid"            : Auth.auth().currentUser?.uid as Any
                 ])
         }
         
