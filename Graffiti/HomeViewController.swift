@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
     func openGallary(){
         pickImage.sourceType = UIImagePickerController.SourceType.photoLibrary
         //If you dont want to edit the photo then you can set allowsEditing to false
-        pickImage.allowsEditing = true
+        pickImage.allowsEditing = false
         pickImage.delegate = self
         self.present(pickImage, animated: true, completion: nil)
         
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
             pickImage.sourceType = UIImagePickerController.SourceType.camera
             //If you dont want to edit the photo then you can set allowsEditing to false
-            pickImage.allowsEditing = true
+            pickImage.allowsEditing = false
             pickImage.delegate = self
             self.present(pickImage, animated: true, completion: nil)
               
@@ -91,7 +91,7 @@ extension HomeViewController:  UIImagePickerControllerDelegate, UINavigationCont
         
         if let editedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             
-            passImage = UIImage.resizeImage(image: editedImage, newHeight: 300)
+            passImage = editedImage
         }
         
         //Dismiss the UIImagePicker after selection
