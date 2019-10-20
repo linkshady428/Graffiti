@@ -33,7 +33,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     var imageID:String!
     var uploadLabels:String!
     var uploadCoordinates:String!
-    var isGrafitti = false
+    var isGraffiti = false
     
     override func viewDidLoad() {
    
@@ -96,8 +96,8 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
             guard url != nil else { return }
             self.ref?.child("images").child(self.imageID).setValue([
                 "description"     : self.desView.text!,
-                "label"          : self.uploadLabels!,
-                "isGrafitti"      : self.isGrafitti,
+                "label"           : self.uploadLabels!,
+                "graffiti"        : self.isGraffiti.description,
                 "location"        : self.uploadCoordinates!,
                 "tag"             : self.tagView.text!,
                 "uuid"            : Auth.auth().currentUser?.uid as Any
@@ -156,7 +156,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
                 self.uploadLabels.removeLast()
                 self.uploadLabels += "."
                 if wallL && postL {
-                    self.isGrafitti = true
+                    self.isGraffiti = true
                 }
                 print(self.uploadLabels!)
             }else{
