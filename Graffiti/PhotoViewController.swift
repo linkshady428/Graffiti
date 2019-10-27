@@ -70,7 +70,7 @@ class PhotoViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func finishAction(_ sender: Any) {
-        if(imageView.image == nil){
+        if(imageView.image == nil && !(desView.text.isEmpty) && !(tagView.text!.isEmpty) ){
             let alertController = UIAlertController(title: "Error", message: "Select an image", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             

@@ -25,8 +25,14 @@ class SignUpViewController: UIViewController {
     //where to upload Name!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
     @IBAction func signUpAction(_ sender: Any) {
-        if pwField.text != rePwField.text{
+        if (pwField.text != rePwField.text ){
             let alertController = UIAlertController(title: "Password Incorrect", message: "Please comfirm your re-type password!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else if nameField.text!.isEmpty{
+            let alertController = UIAlertController(title: "Error", message: "Name must be not empty!", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
             alertController.addAction(defaultAction)

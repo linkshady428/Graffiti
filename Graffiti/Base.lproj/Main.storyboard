@@ -501,7 +501,6 @@
                                 <rect key="frame" x="16" y="59" width="343" height="261.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="0Nz-Pg-IuE"/>
-                                    <constraint firstAttribute="height" constant="261.5" id="TUR-Iv-oU5"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LK-Jj-LFB">
@@ -582,6 +581,7 @@
                             <constraint firstItem="UTH-KX-4Rx" firstAttribute="trailing" secondItem="msm-AK-Cng" secondAttribute="trailing" constant="8" id="dPR-2C-I9o"/>
                             <constraint firstItem="UTH-KX-4Rx" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VgN-T3-VLB" secondAttribute="trailing" symbolic="YES" id="fIt-mh-tMR"/>
                             <constraint firstItem="3da-7M-RYf" firstAttribute="top" secondItem="L3t-Nn-XEb" secondAttribute="bottom" constant="7" id="gaa-xx-m1p"/>
+                            <constraint firstItem="3LK-Jj-LFB" firstAttribute="top" secondItem="p17-pF-7BE" secondAttribute="bottom" constant="2" id="gs9-yT-KN4"/>
                             <constraint firstItem="L3t-Nn-XEb" firstAttribute="top" secondItem="t8i-Nn-cea" secondAttribute="bottom" constant="4.5" id="hU5-98-EPO"/>
                             <constraint firstItem="cBY-d0-UAB" firstAttribute="leading" secondItem="Q9w-lF-CHp" secondAttribute="leading" id="jRE-bv-U6G"/>
                             <constraint firstItem="msm-AK-Cng" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Q9w-lF-CHp" secondAttribute="trailing" constant="8" symbolic="YES" id="myf-qM-fVH"/>
@@ -989,7 +989,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Mie-Me-mWM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-oj-bhs">
                                 <rect key="frame" x="129" y="473" width="117" height="35"/>
@@ -1013,7 +1013,7 @@
                                     <constraint firstAttribute="height" constant="30" id="axZ-42-Jlx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6 characters or more" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tL2-kW-jaf">
                                 <rect key="frame" x="128" y="340.5" width="228" height="30.5"/>
@@ -1022,7 +1022,7 @@
                                     <constraint firstAttribute="height" constant="30.5" id="ghA-dq-sGW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwR-PN-U71">
                                 <rect key="frame" x="13" y="391" width="61.5" height="22.5"/>
@@ -1102,7 +1102,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3pr-M8-lSk">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
