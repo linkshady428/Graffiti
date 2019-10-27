@@ -89,7 +89,7 @@ extension SettingViewController:  UIImagePickerControllerDelegate, UINavigationC
         
         if let editedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             
-            passImage = editedImage
+            passImage = UIImage.resizedaImage(image: editedImage, newHeight: 270)
         }
         
         //Dismiss the UIImagePicker after selection

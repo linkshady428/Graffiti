@@ -268,7 +268,7 @@ extension PhotoViewController:  UIImagePickerControllerDelegate, UINavigationCon
         
         if let editedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             
-            self.imageView.image = editedImage
+            self.imageView.image = UIImage.resizedaImage(image: editedImage, newHeight: 270)
         }
         
         //Dismiss the UIImagePicker after selection
